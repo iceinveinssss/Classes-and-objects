@@ -1,31 +1,26 @@
-#include "Time.h"
+п»ї// main.cpp
 #include <iostream>
+#include "TimeConverter.h"
 
 int main() 
 {
     setlocale(0, "rus");
-    // Создание объекта со значениями по умолчанию
-    Time time1;
-    std::cout << time1.toString() << std::endl;
+    int minutes, seconds;
 
-    // Создание объекта с введенными значениями
-    int hours, minutes, seconds;
-    std::cout << "Введите часы: ";
-    std::cin >> hours;
-    std::cout << "Введите минуты: ";
+    // Р’РІРѕРґ Р·РЅР°С‡РµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
+    std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РјРёРЅСѓС‚: ";
     std::cin >> minutes;
-    std::cout << "Введите секунды: ";
+    std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРµРєСѓРЅРґ: ";
     std::cin >> seconds;
 
-    Time time2(hours, minutes, seconds);
-    std::cout << time2.toString() << std::endl;
+    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р°
+    TimeConverter timeConverter(minutes, seconds);
 
-    // Определение минут до полуночи
-    std::cout << "Минут до полуночи: " << time2.minutesToMidnight() << std::endl;
+    // Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РѕР± РѕР±СЉРµРєС‚Рµ
+    std::cout << timeConverter.toString() << std::endl;
 
-    // Увеличение времени на 100 минут
-    time2.increaseBy100Minutes();
-    std::cout << "После увеличения на 100 минут: " << time2.toString() << std::endl;
+    // Р’С‹РІРѕРґ РѕР±С‰РµРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° СЃРµРєСѓРЅРґ
+    std::cout << "РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРµРєСѓРЅРґ: " << timeConverter.totalSeconds() << std::endl;
 
     return 0;
 }
